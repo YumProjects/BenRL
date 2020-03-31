@@ -15,7 +15,6 @@ namespace Test
         static void Main(string[] args)
         {
             TestTrainingSet();
-            TestAgents();
 
             Console.ReadLine();
         }
@@ -55,11 +54,11 @@ namespace Test
             model.layers.Add(new SigmoidLayer());
             model.Init(4);
 
-            TrainingSetOptimizer optimizer = new TrainingSetOptimizer(inputSet, outputSet, model, 100, 1.5);
-            for(int g = 0; g < 300; g++)
+            TrainingSetOptimizer optimizer = new TrainingSetOptimizer(inputSet, outputSet, model, 2, 2);
+            for(int g = 0; g < 100; g++)
             {
                 optimizer.NextGeneration();
-                Console.WriteLine("Generation " + g + " error: " + optimizer.optimizer.bestError);
+                Console.WriteLine(g + ", " + optimizer.optimizer.bestError);
             }
         }
 

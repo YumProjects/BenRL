@@ -110,13 +110,10 @@ namespace BenRL.Optimization
         {
             population[index].model = model;
         }
-
+        
         double GetMultiplier(double error)
         {
-            double maxX = 1 / (error * learningRate);
-            double minX = maxX / 10000;
-            double x = minX + (rand.NextDouble() * (maxX - minX));
-            return Math.Pow(1 / x, 2);
+            return Math.Pow(error, 2) * learningRate;
         }
 
         /// <summary>
